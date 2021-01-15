@@ -22,19 +22,17 @@ public final class Logic {
     figures[index] = figures[index].copy(dest);
   }
 
-  private boolean free(Cell[] steps) {
-    int a = 0;
+  private boolean free(Cell[] steps) throws OccupiedCellException {
     for (int i = 0; i < figures.length; i++) {
       if (figures[i] != null) {
         for (int j = 0; j < steps.length; j++) {
           if (figures[i].position() == steps[j]) {
-            a = 1;
-            break;
+            throw new OccupiedCellException("String can not be empty!");
           }
         }
       }
     }
-    return a != 1;
+    return true;
   }
 
   public void clean() {
